@@ -1,0 +1,246 @@
+/* ==========================================================
+   STYLE DE LA PAGE LOVECRAFT
+   Les couleurs sont définies ici : change-les facilement !
+   ========================================================== */
+
+:root {
+    --fond-profond: #15201f;   /* vert-gris très sombre (fond de la page) */
+    --fond-clair: #1d2c2a;     /* fond des sections "sombre" */
+    --papier: #e9e3d1;         /* couleur du texte (papier ancien) */
+    --laiton: #b8934f;         /* couleur d'accent (laiton terni) */
+    --mousse: #6d8a70;         /* vert doux pour les traits et cadres */
+    --mousse-clair: #8fae93;   /* vert doux pour les petits textes */
+}
+
+/* Réglages de base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--fond-profond);
+    color: var(--papier);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* ---------- EN-TÊTE ---------- */
+.hero {
+    padding: 5.5rem 1.5rem 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--mousse);
+}
+
+.hero h1 {
+    font-family: "IM Fell English", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 8vw, 5rem);
+    line-height: 1.1;
+    color: var(--papier);
+}
+
+.hero-sub {
+    margin-top: 1rem;
+    color: var(--laiton);
+    font-style: italic;
+}
+
+.hero-text {
+    max-width: 34rem;
+    margin: 1rem auto 0;
+}
+
+/* ---------- SECTIONS ---------- */
+/* Chaque section = 2 colonnes : texte à gauche, image à droite */
+.bloc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 4.5rem max(1.5rem, calc((100% - 70rem) / 2));
+}
+
+/* Section "sombre" : fond un peu plus clair pour alterner */
+.bloc.sombre {
+    background: var(--fond-clair);
+}
+
+/* Section "image-gauche" : l'image passe avant le texte */
+.bloc.image-gauche .image {
+    order: -1;
+}
+
+.texte h2 {
+    font-family: "IM Fell English", Georgia, serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--laiton);
+    margin-bottom: 1rem;
+}
+
+.texte p {
+    max-width: 32rem;
+    margin-bottom: 1rem;
+}
+
+.texte strong {
+    color: var(--laiton);
+    font-weight: 600;
+}
+
+/* ---------- EMPLACEMENTS D'IMAGES ---------- */
+/* Toutes les images ont la même taille : largeur de la colonne, hauteur 24rem */
+/* Le cadre vide (emplacement) garde une taille fixe */
+.emplacement {
+    width: 100%;
+    height: 28rem;
+    border-radius: 4px;
+}
+
+/* Les vraies images : la taille s'adapte automatiquement à l'image */
+.image img {
+    display: block;
+    width: auto;          /* la largeur suit la forme de l'image */
+    height: auto;         /* la hauteur aussi, sans déformation */
+    max-width: 100%;      /* ne dépasse jamais la colonne */
+    max-height: 28rem;    /* ne dépasse jamais 24rem de haut */
+    border-radius: 4px;
+
+/* Le cadre vide qui montre où mettre l'image */
+.emplacement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 2px dashed var(--mousse);
+    color: var(--mousse-clair);
+    text-align: center;
+    padding: 1rem;
+}
+
+.emplacement span {
+    font-family: "IM Fell English", Georgia, serif;
+    font-size: 1.75rem;
+}
+
+.emplacement small {
+    font-size: 1rem;
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--mousse-clair);
+}
+
+/* ---------- SECTION UNIVERS DE CTHULHU ---------- */
+/* Les deux colonnes sont alignées en haut */
+.bloc.univers {
+    align-items: start;
+}
+
+/* Liste de points clés */
+.points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-left: 1.4rem;
+    margin-bottom: 1.5rem;
+    max-width: 32rem;
+}
+
+/* Colonne de droite */
+.dieux {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Un groupe = un titre + ses dieux, séparé du suivant par un trait */
+.groupe {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--mousse);
+}
+
+.groupe:last-child {
+    border-bottom: none;
+}
+
+.groupe h3 {
+    font-family: "IM Fell English", Georgia, serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--laiton);
+}
+
+/* Une ligne = le nom du dieu + sa description */
+.dieu {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.dieu .nom {
+    flex-shrink: 0;
+    width: 10.5rem;
+    font-family: "IM Fell English", Georgia, serif;
+    font-size: 1.4rem;
+}
+
+.info {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ---------- NOTE ---------- */
+.note {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--laiton);
+}
+
+/* ---------- PIED DE PAGE ---------- */
+footer {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--mousse);
+    color: var(--mousse-clair);
+}
+
+/* ---------- MOBILE ---------- */
+/* Sur petit écran, on passe à une seule colonne */
+@media (max-width: 800px) {
+    .bloc {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    /* L'image passe toujours après le texte sur mobile */
+    .bloc.image-gauche .image {
+        order: 0;
+    }
+
+    /* Le nom du dieu passe au-dessus de sa description */
+    .dieu {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .dieu .nom {
+        width: auto;
+    }
+}
